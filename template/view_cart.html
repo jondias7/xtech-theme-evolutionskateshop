@@ -1,0 +1,98 @@
+{% extends _layout %}
+
+{% block content %}
+
+{{ onepage_checkout() }}
+
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+        $('.page-header').before('<a class="contBuy" href="/">{{ "Continuar Comprando"|trans({'en':'See more products'}) }}</a>');
+        $('.cart-account-header .cart-account-buttons .pull-right').css('margin-top', '20px');
+		$('.cart-coupon .btn-default').val('{{ "Aplicar"|trans({'en':'Apply'}) }}');
+		if(!$('#cartview .summary').length){
+            $('#cartview .alert-info').replaceWith('<p class="no-prod" style="margin-bottom: 20px;">{{ "Você ainda não colocou nenhum item no carrinho."|trans({'en':'Your cart is empty'}) }}');
+        }
+		
+        // Retiro o hexadeciomal de cor da variacao
+        $('#checkout_summary table tbody tr td:nth-child(2) div').each(function(){
+            var html = $(this).html(), part = '';
+            if(html.indexOf('Cor') === -1 || html.indexOf('Cores') === -1){
+                for(var i = 0, len = html.length; i < len; i++){
+                    if(html[i] == '#'){
+                        part = html.substr(html.indexOf('#'), 7);
+                    }
+                }
+            }
+            $(this).html(html.replace(part, ''));
+        });
+	});
+	
+    {% if get_collection('shipping_address')|length > 0 %}
+        {% set address_list = [] %}
+        {% for key, i in get_collection('shipping_address') %}
+            {% if i['select:activate'] == 'Sim' %}
+                {% set cep = i['textarea:ceps']|replace({'-':'',' ':''})|split(',') %}
+                {% set address_list = address_list|merge(cep)  %}
+            {% endif %}
+        {% endfor %}
+        
+        {% if address_list|length > 0 %}
+            $(document).ready(function(){
+                $('.checkout').after('<div class="not_in_cep" style="display:none;"><div class="alert alert-danger text-center">Não entregamos para o CEP escolhido</div></div>');
+                check_delivery_cep($('#zip_code'));
+                
+                // CEP Check
+                $('#zip_code').on('blur', function(){
+                   check_delivery_cep($(this));
+                });
+                
+                $('.input-group-search-address').on('click',function(){
+                    check_delivery_cep($('#zip_code'));
+                });
+                
+                $('.cart-actions button[type=submit]').on('click', function(){
+                   check_delivery_cep($('#zip_code'));
+                });
+                
+                $('#onepage_checkoutform').submit(function(){
+                   if(check_delivery_cep($('#zip_code')) == true){
+                       return true;
+                   }else{ 
+                       return false;
+                   }
+                }); 
+            });
+        
+        	function check_delivery_cep(e){
+                var address_list = {{ address_list|json_encode }};
+                
+                var cep = e.val().trim();
+                var check = false;
+                if(cep.length == 9  && cep.indexOf('_') == -1){
+                    $.each(address_list, function(index, value){
+                        var format_cep = cep.replace('-','');
+                        if(format_cep == value.trim()){
+                            check = true;
+                        }
+                    });
+                    if(check){
+                        $('.shippingwrap').slideDown();
+                        $('.paymentwrap').slideDown();
+                        $('.cart-actions').slideDown();
+                        $('.not_in_cep').slideUp();
+                    } else{
+                        $('.shippingwrap').slideUp();
+                        $('.paymentwrap').slideUp();
+                        $('.cart-actions').slideUp();
+                        $('.not_in_cep').slideDown();
+                    }
+                } 
+                return check;
+        	}
+    	{% endif %}
+    {% endif %}
+	
+</script>
+
+{% endblock %}

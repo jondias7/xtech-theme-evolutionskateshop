@@ -1,0 +1,68 @@
+a{
+    text-decoration: none;
+}
+
+small{
+    color: #666;
+}
+
+.alert{
+    border-radius:0;
+    margin: 0;
+}
+
+label{
+    width: 100%;
+}
+
+.config-panel .header-group:focus{
+    text-decoration: none;
+    outline: 0 ;
+    box-shadow: none;
+}
+
+.more-option{
+    background: #000;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.more-option:hover{
+    background: #333;
+}
+
+.color-hide{
+    display: none;
+}
+
+.chs_btn{
+    background: #000;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    display: inline-block;
+    width: 45%;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.chs_btn:hover{
+    background: #333;
+    cursor: pointer;
+}
+
+.strct_mode{
+    margin-right: 10%;
+}
+
+.preset_img{
+    border: 5px solid #000;
+    max-width: 100%;
+}
+
+.html{
+    color: #5eaeff;
+    font-size: 12px;
+}
