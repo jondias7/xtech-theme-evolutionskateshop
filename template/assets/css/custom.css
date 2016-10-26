@@ -2,3 +2,20 @@
  * Custom CSS
  * Custom by @marciotoledo.
  */
+.carousel-brands {
+	padding: 0;
+	list-style: none;
+}
+.carousel-brands li {
+	margin: 0;
+	padding: 0;
+}
+.carousel-brands .brand {
+	width: 100%;
+	height: auto;
+	opacity: 0.6;
+	transition: opacity .5s ease;
+}
+.carousel-brands .brand:hover {
+	opacity: 1;
+}
