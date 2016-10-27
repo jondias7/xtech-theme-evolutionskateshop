@@ -2,15 +2,18 @@
  * Custom CSS
  * Custom by @marciotoledo.
  */
-.carousel-brands {
+ 
+ .carousel-brands {
 	padding: 0;
 	list-style: none;
+	overflow: hidden;
 }
 .carousel-brands li {
 	margin: 0;
 	padding: 0;
 }
 .carousel-brands .brand {
+    display: none;
 	width: 100%;
 	height: auto;
 	opacity: 0.6;
@@ -18,4 +21,8 @@
 }
 .carousel-brands .brand:hover {
 	opacity: 1;
+}
+
+.slick-initialized .brand { 
+    display: block;
 }
