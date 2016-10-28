@@ -3,10 +3,9 @@
  * Custom by @marciotoledo.
  */
  
- .carousel-brands {
+.carousel-brands {
 	padding: 0;
 	list-style: none;
-	overflow: hidden;
 }
 .carousel-brands li {
 	margin: 0;
