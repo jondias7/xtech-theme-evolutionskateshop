@@ -41,6 +41,15 @@
 				$('.carousel-control.right').css("top",ch);
 			});
 		</script>
+		
+		<div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="{{ theme_url('assets/img/banner-barra.png') }}" alt="Loja Física há 17 anos, Frete Grátis e 7% de desconto no boleto!" class="banner-barra">
+                </div>
+            </div>
+        </div>
+		
 		{% if template_settings('select:banner_extra') != "Não" %}
 		<div class="container{{ template_settings('if:force_content') and template_settings('if:force_banner') ? '-fluid' : '' }}">
     		<div class="row">
