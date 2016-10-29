@@ -1,8 +1,76 @@
-/*!
+/*
  * Custom CSS
  * Custom by @marciotoledo.
  */
  
+ 
+ /* Search */
+#top-search {
+    margin-top:60px;
+}
+#top-search .input-group {
+    border: 0;
+    border-bottom:1px solid #000;
+}
+#top-search .input-group input {
+    font-size: 24px;
+    background: #FFF !important;
+}
+
+#top-search.adjust .input-group input {
+    height: 50px;
+}
+#top-search .input-group button {
+    font-size:24px;
+    background: #FFF !important;
+}
+#top-search .input-group button:hover {
+    background: #FFF !important;
+}
+#top-search .input-group button:hover i {
+    color:#000 !important;
+}
+.adjust #search-results {
+    width: 100%;
+    left: 0;
+    top: 75px;
+    padding-right:15px;
+    padding-left:15px;
+    box-shadow: none;
+}
+#top-search .arrowup {
+    border-bottom-color: #000;
+}
+#top-search #search-results-in {
+    box-shadow: none;
+    border: 1px solid #000;
+}
+#search-results .line .image img {
+    border:0;
+    width: 100%;
+}
+.adjust #search-results .line .image {
+    width: 20%;
+    margin:10px;
+}
+.adjust #search-results .line .desc {
+    width: 70%;
+    float:right;
+}
+#search-results a:hover {
+    background:#DDD;
+}
+#search-results .line .desc .price .saleprice {
+    float:none;
+    margin-right:0;
+}
+
+
+/* Carousel Brands */
+
+#brands {
+    width:940px;
+}
 .carousel-brands {
 	padding: 0;
 	list-style: none;
