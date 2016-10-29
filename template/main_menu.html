@@ -6,7 +6,7 @@
         </li>
     {% endfor %}
     {% for cat in categories %}
-        {% if cat.category.slug != 'home' %}
+        {% if cat.category.slug != 'home' and cat.category.slug != 'marcas' %}
             {% if cat.children|count > 0 %}
                 <li class="dropdown" onmouseover="$(this).addClass('open');" onmouseout="$(this).removeClass('open');">
                     <a href="{{ site_url(cat.category.slug) }}">
